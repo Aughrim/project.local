@@ -4,8 +4,7 @@
 use app\components\MylikeWidget;
 use app\components\MyotherWidget;
 use yii\bootstrap\Modal;
-use app\assets\AppAsset;
-AppAsset::register($this);
+
 ?>
 
 
@@ -23,11 +22,13 @@ AppAsset::register($this);
 </p>
 <?php
 Modal::begin([
-'header' => '<h2>Привет</h2>',
-'toggleButton' => ['label' => 'click me'],
+    'header' => '<h2>Вот это модальное окно!</h2>',
+    'toggleButton' => [
+        'tag' => 'button',
+        'class' => 'btn btn-lg btn-block btn-info',
+        'label' => 'Нажмите здесь, забавная штука!',
+    ]
 ]);
-
-echo 'Say hello...';
-
+echo 'Надо взять на вооружение.';
 Modal::end();
 ?>

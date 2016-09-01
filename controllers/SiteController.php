@@ -122,4 +122,13 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionAdmin()
+    {
+        if (Yii::$app->user->id !== '100') {
+            return $this->goHome();
+        }
+
+        return $this->render('admin');
+    }
 }
