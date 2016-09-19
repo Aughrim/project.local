@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -20,8 +21,10 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -39,14 +42,22 @@ AppAsset::register($this);
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Обо мне', 'url' => ['/site/about']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
-            ['label' => 'Управление', 'url' => ['/site/admin'], 'visible' => Yii::$app->user->id =='100'],
+            ['label' => 'Управление',
+                'items' => [
+                    ['label' => 'Фотогалерея', 'url' => ['/picture/index']],
+                    '<li class="divider"></li>',
+                    ['label' => 'Обо мне', 'url' =>Url::to (['about/update', 'id' =>100])],
+                    '<li class="divider"></li>',
+                    ['label' => 'Контакты', 'url' => ['/site/admin']],
+                ], 'visible' => Yii::$app->user->id =='100',
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Выйти (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
@@ -57,6 +68,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
+
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -64,6 +76,7 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
+
 
 <footer class="footer">
     <div class="container">

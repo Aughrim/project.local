@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\About;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -41,17 +43,17 @@ class SiteController extends Controller
      * @inheritdoc
      */
     public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
+{
+    return [
+        'error' => [
+            'class' => 'yii\web\ErrorAction',
+        ],
+        'captcha' => [
+            'class' => 'yii\captcha\CaptchaAction',
+            'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+        ],
+    ];
+}
 
     /**
      * Displays homepage.
@@ -120,7 +122,15 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        if (($model = About::findOne(100)) !== null) {
+            return $this->render('about',[
+                'model' => $model,
+            ]);
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+
     }
 
     public function actionAdmin()
