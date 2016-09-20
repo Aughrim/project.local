@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function($data){
                     return Html::img(($data->link),[
-                        'alt'=>'yii2 - картинка в gridview',
+                        'alt'=>'Предварительный просмотр',
                         'style' => 'width:100px;'
                     ]);
                 },

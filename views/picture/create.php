@@ -26,9 +26,4 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-
-<?= yii::$app->basePath ?>
-
-
-
 </div>

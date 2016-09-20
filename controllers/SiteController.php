@@ -127,7 +127,7 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('«апрашиваемой страницы не существует.');
         }
 
 

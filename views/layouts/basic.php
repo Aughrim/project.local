@@ -47,9 +47,7 @@ AppAsset::register($this);
                     ['label' => 'Фотогалерея', 'url' => ['/picture/index']],
                     '<li class="divider"></li>',
                     ['label' => 'Обо мне', 'url' =>Url::to (['about/update', 'id' =>100])],
-                    '<li class="divider"></li>',
-                    ['label' => 'Контакты', 'url' => ['/site/admin']],
-                ], 'visible' => Yii::$app->user->id =='100',
+                   ], 'visible' => Yii::$app->user->id =='100',
             ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]

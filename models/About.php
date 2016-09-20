@@ -38,7 +38,7 @@ class About extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'comment' => 'Comment',
+            'comment' => '',
         ];
     }
 }

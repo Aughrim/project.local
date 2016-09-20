@@ -200,39 +200,4 @@ class PictureController extends Controller
 
 
 
-    public function actionUpload11()
-    {
-        $fileName = 'file';
-        $uploadPath = 'uploads';
-
-
-        if (isset($_FILES[$fileName])) {
-
-            $file = \yii\web\UploadedFile::getInstanceByName($fileName);
-
-            //Print file data
-            //print_r($file);
-            $file->saveAs($uploadPath . '/' . $file->name);
-          // if ($file->saveAs($uploadPath . '/' . $file->name)) {
-                //Now save file data to database
-               //
-               //
-            //   echo \yii\helpers\Json::encode($file);
-              // echo 'file send';
-
-//               return $file->name;
-  //         }
-
-
-        }
-        return false;
-
-    }
-
-
-    public function actionAbout()
-    {
-        $message = 'ПриветБроy';
-        return $this->render('about', ['message' => $message]);
-    }
 }

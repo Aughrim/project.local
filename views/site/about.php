@@ -18,14 +18,5 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     </div>
-   // <code><?= __FILE__ ?></code>
+
 </div>
-<?php
-Modal::begin([
-    'header' => '<h2>Привет</h2>',
-    'toggleButton' => ['label' => 'click me'],
-]);
-
-echo 'Say hello...';
-
-Modal::end();
