@@ -3,10 +3,35 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\components\CKEditorExt;
+use iutbay\yii2kcfinder\KCFinder;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\About */
 /* @var $form yii\widgets\ActiveForm */
+
+// kcfinder options
+// http://kcfinder.sunhater.com/install#dynamic
+$kcfOptions = array_merge(KCFinder::$kcfDefaultOptions, [
+    'uploadURL' => Yii::getAlias('@web').'/upload',
+    'access' => [
+        'files' => [
+            'upload' => true,
+            'delete' => false,
+            'copy' => false,
+            'move' => false,
+            'rename' => false,
+        ],
+        'dirs' => [
+            'create' => true,
+            'delete' => false,
+            'rename' => false,
+        ],
+    ],
+]);
+
+// Set kcfinder session options
+Yii::$app->session->set('KCFINDER', $kcfOptions);
+
 ?>
 
 <div class="about-form">

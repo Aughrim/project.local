@@ -36,8 +36,25 @@ $this->params['breadcrumbs'][] = $this->title;
             'comment',
             'link',
             'gallery',
-            'link:image',
+           // 'link:image',
+
+            [
+                'label' => 'Картинка',
+                'format' => 'raw',
+                'value' => Html::img(($model->link),[
+                        'class'=>'img-responsive',
+                        //'style' => 'width:100px;'
+                    ]),
+
+
+            ],
+
         ],
-    ]) ?>
+
+
+          //  $options = ['class' => 'img-responsive']
+
+    ]
+    ) ?>
 
 </div>
